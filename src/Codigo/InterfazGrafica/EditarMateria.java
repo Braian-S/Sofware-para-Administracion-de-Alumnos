@@ -8,6 +8,7 @@ package Codigo.InterfazGrafica;
 import Codigo.Fichero;
 import Codigo.Materias;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -53,7 +54,7 @@ public class EditarMateria extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         txtnombre = new javax.swing.JTextField();
         txtprecio = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnaplicar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
 
         setClosable(true);
@@ -90,7 +91,12 @@ public class EditarMateria extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Precio:");
 
-        jButton1.setText("Aplicar Cambios");
+        btnaplicar.setText("Aplicar Cambios");
+        btnaplicar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnaplicarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -122,7 +128,7 @@ public class EditarMateria extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtprecio)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnaplicar)
                 .addGap(25, 25, 25))
         );
         jPanel1Layout.setVerticalGroup(
@@ -136,7 +142,7 @@ public class EditarMateria extends javax.swing.JInternalFrame {
                             .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addComponent(jButton1)))
+                        .addComponent(btnaplicar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -163,7 +169,7 @@ public class EditarMateria extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 565, Short.MAX_VALUE)
         );
 
         pack();
@@ -177,6 +183,28 @@ public class EditarMateria extends javax.swing.JInternalFrame {
     private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btncancelarActionPerformed
+
+    private void btnaplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaplicarActionPerformed
+        
+        String nombre=txtnombre.getText();
+        double precio=Double.parseDouble(txtprecio.getText());
+        
+        int fila =TablaMaterias.getSelectedRow();
+        
+        if(fila>=0){
+            
+           fichero.editarMateria(nombre,precio,fila);
+           mostrar(fichero.enviarListaMaterias());
+            
+        }else{
+            JOptionPane.showMessageDialog(null,"Por Favor Seleccione una Materia");
+        }
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_btnaplicarActionPerformed
 
     
     
@@ -215,9 +243,9 @@ public class EditarMateria extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaMaterias;
+    private javax.swing.JButton btnaplicar;
     private javax.swing.JButton btncancelar;
     private javax.swing.JButton btneditar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

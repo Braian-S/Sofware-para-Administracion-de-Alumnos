@@ -178,7 +178,7 @@ public void eliminarMateria(int elemento){
 }
 
 
-public void editarMateria(String nombre, double monto){
+public void editarMateria(String nombre, double monto,int elemento){
     
     
         try{
@@ -189,8 +189,9 @@ public void editarMateria(String nombre, double monto){
                     arrayM=(ArrayList<Materias>)objetoEntradam.readObject(); //Se realiza un casting
                     
                         
-                                 Materias materia=new Materias(nombre,monto);
-                                    arrayM.add(materia);
+                                 arrayM.get(elemento).setNombre(nombre);
+                                 arrayM.get(elemento).setMonto(monto);
+                                 
                                  
                                    // teclado.nextLine();// limpieza de buffer
                             guardarMateria(arrayM);

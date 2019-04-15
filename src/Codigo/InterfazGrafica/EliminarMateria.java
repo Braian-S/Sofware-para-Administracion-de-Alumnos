@@ -144,7 +144,7 @@ public class EliminarMateria extends javax.swing.JInternalFrame {
             fichero.eliminarMateria(fila);
             mostrar(fichero.enviarListaMaterias());
         }else{
-            JOptionPane.showMessageDialog(null,"Por Favor Seleccione una Materia");
+            
         }
         
         
