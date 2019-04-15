@@ -190,11 +190,14 @@ public class EditarMateria extends javax.swing.JInternalFrame {
         double precio=Double.parseDouble(txtprecio.getText());
         
         int fila =TablaMaterias.getSelectedRow();
+        //int columna=TablaMaterias.getSelectedColumn();
         
-        if(fila>=0){
+        if((fila>=0)){
             
            fichero.editarMateria(nombre,precio,fila);
-           mostrar(fichero.enviarListaMaterias());
+           dtm.setValueAt(nombre, fila, 0);
+           dtm.setValueAt(precio, fila, 1); 
+           limpiarCampos();
             
         }else{
             JOptionPane.showMessageDialog(null,"Por Favor Seleccione una Materia");
@@ -218,7 +221,7 @@ public class EditarMateria extends javax.swing.JInternalFrame {
         }
     }
     
-     public void mostrar(ArrayList<Materias>listaMaterias){
+    public void mostrar(ArrayList<Materias>listaMaterias){
         
         Object fila[]=new Object[2];
     
@@ -231,7 +234,10 @@ public class EditarMateria extends javax.swing.JInternalFrame {
         
     }
     
-    
+    public void limpiarCampos(){
+        txtnombre.setText(null);
+        txtprecio.setText(null);
+    }
     
     
     
