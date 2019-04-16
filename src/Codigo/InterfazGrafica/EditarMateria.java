@@ -38,6 +38,7 @@ public class EditarMateria extends javax.swing.JInternalFrame {
         CargarLista(fichero.enviarListaMaterias());
         txtnombre.setEnabled(false);
         txtprecio.setEnabled(false);
+        btnaplicar.setEnabled(false);
     }
 
     
@@ -59,7 +60,6 @@ public class EditarMateria extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setMaximizable(true);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -169,15 +169,22 @@ public class EditarMateria extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 565, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btneditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditarActionPerformed
-        txtnombre.setEnabled(true);
-        txtprecio.setEnabled(true);
+        
+         int fila =TablaMaterias.getSelectedRow();
+         if(fila>=0){
+             txtnombre.setEnabled(true);
+             txtprecio.setEnabled(true);
+             btnaplicar.setEnabled(true);
+         }else{
+             JOptionPane.showMessageDialog(null,"Por Favor Seleccione una Materia");
+         }
     }//GEN-LAST:event_btneditarActionPerformed
 
     private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
@@ -190,7 +197,7 @@ public class EditarMateria extends javax.swing.JInternalFrame {
         double precio=Double.parseDouble(txtprecio.getText());
         
         int fila =TablaMaterias.getSelectedRow();
-        //int columna=TablaMaterias.getSelectedColumn();
+        
         
         if((fila>=0)){
             
