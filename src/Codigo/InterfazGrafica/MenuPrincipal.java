@@ -143,6 +143,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu3.setText("Materias");
 
         jMenuItem4.setText("Lista");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem4);
         jMenu3.add(jSeparator9);
 
@@ -270,6 +275,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
        JOptionPane.showMessageDialog(null,"Programador Braian Salavarria. Contacto: braian.salavarria@gmail.com");
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+       ListaMaterias listaMaterias=new ListaMaterias();
+       Escritorio.add(listaMaterias);
+       listaMaterias.show();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
