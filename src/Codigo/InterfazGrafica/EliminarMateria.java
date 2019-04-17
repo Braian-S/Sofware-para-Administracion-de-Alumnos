@@ -56,7 +56,6 @@ public class EliminarMateria extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setMaximizable(true);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
