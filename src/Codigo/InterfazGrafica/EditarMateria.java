@@ -91,6 +91,12 @@ public class EditarMateria extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Precio:");
 
+        txtnombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtnombreActionPerformed(evt);
+            }
+        });
+
         btnaplicar.setText("Aplicar Cambios");
         btnaplicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,7 +175,7 @@ public class EditarMateria extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 573, Short.MAX_VALUE)
         );
 
         pack();
@@ -185,6 +191,14 @@ public class EditarMateria extends javax.swing.JInternalFrame {
          }else{
              JOptionPane.showMessageDialog(null,"Por Favor Seleccione una Materia");
          }
+         txtnombre.requestFocus();
+         
+         
+         
+         
+         
+         
+         
     }//GEN-LAST:event_btneditarActionPerformed
 
     private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
@@ -209,12 +223,18 @@ public class EditarMateria extends javax.swing.JInternalFrame {
         }else{
             JOptionPane.showMessageDialog(null,"Por Favor Seleccione una Materia");
         }
-        
-        
-        
-        
+       TablaMaterias.clearSelection();
+       btnaplicar.setEnabled(false);
+       txtnombre.setEnabled(false);
+       txtprecio.setEnabled(false);
+        btneditar.requestFocus();
+       
         
     }//GEN-LAST:event_btnaplicarActionPerformed
+
+    private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnombreActionPerformed
 
     
     
