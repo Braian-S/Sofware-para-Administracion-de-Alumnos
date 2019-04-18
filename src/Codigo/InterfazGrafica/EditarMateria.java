@@ -54,9 +54,9 @@ public class EditarMateria extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtnombre = new javax.swing.JTextField();
-        txtprecio = new javax.swing.JTextField();
         btnaplicar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        txtprecio = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -101,6 +101,12 @@ public class EditarMateria extends javax.swing.JInternalFrame {
         btnaplicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnaplicarActionPerformed(evt);
+            }
+        });
+
+        txtprecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtprecioActionPerformed(evt);
             }
         });
 
@@ -175,7 +181,7 @@ public class EditarMateria extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 573, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 585, Short.MAX_VALUE)
         );
 
         pack();
@@ -207,12 +213,26 @@ public class EditarMateria extends javax.swing.JInternalFrame {
 
     private void btnaplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaplicarActionPerformed
         
+   
+        if(txtnombre.getText().isEmpty() && txtprecio.getText().isEmpty()){
+    
+            JOptionPane.showMessageDialog(null,"Por Favor Ingrese Nombre y Precio");
+    
+        }else{
+    
+    if(txtnombre.getText().isEmpty()){
+            
+            JOptionPane.showMessageDialog(null,"Por Favor Ingrese Nombre ");
+            limpiarCampos();
+    }else{
+        
+        try{
+            
         String nombre=txtnombre.getText();
         double precio=Double.parseDouble(txtprecio.getText());
-        
+         
+       
         int fila =TablaMaterias.getSelectedRow();
-        
-        
         if((fila>=0)){
             
            fichero.editarMateria(nombre,precio,fila);
@@ -228,16 +248,113 @@ public class EditarMateria extends javax.swing.JInternalFrame {
        txtnombre.setEnabled(false);
        txtprecio.setEnabled(false);
         btneditar.requestFocus();
+            
+        }catch(NumberFormatException ex){
+           JOptionPane.showMessageDialog(null,"Por Favor Ingrese Precio Válido");
+           limpiarCampos();
+        }
+    }
+}
+        
+        
        
         
     }//GEN-LAST:event_btnaplicarActionPerformed
 
     private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
-        // TODO add your handling code here:
+      
+      if(txtnombre.getText().isEmpty() && txtprecio.getText().isEmpty()){
+    
+            JOptionPane.showMessageDialog(null,"Por Favor Ingrese Nombre y Precio");
+    
+        }else{
+    
+    if(txtnombre.getText().isEmpty()){
+            
+            JOptionPane.showMessageDialog(null,"Por Favor Ingrese Nombre ");
+            limpiarCampos();
+    }else{
+        
+        try{
+            
+        String nombre=txtnombre.getText();
+        double precio=Double.parseDouble(txtprecio.getText());
+         
+       
+        int fila =TablaMaterias.getSelectedRow();
+        if((fila>=0)){
+            
+           fichero.editarMateria(nombre,precio,fila);
+           dtm.setValueAt(nombre, fila, 0);
+           dtm.setValueAt(precio, fila, 1); 
+           limpiarCampos();
+            
+        }else{
+            JOptionPane.showMessageDialog(null,"Por Favor Seleccione una Materia");
+        }
+       TablaMaterias.clearSelection();
+       btnaplicar.setEnabled(false);
+       txtnombre.setEnabled(false);
+       txtprecio.setEnabled(false);
+        btneditar.requestFocus();
+            
+        }catch(NumberFormatException ex){
+           JOptionPane.showMessageDialog(null,"Por Favor Ingrese Precio Válido");
+           limpiarCampos();
+        }
+    }  
+      }  
     }//GEN-LAST:event_txtnombreActionPerformed
 
+    private void txtprecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtprecioActionPerformed
+       
+        if(txtnombre.getText().isEmpty() && txtprecio.getText().isEmpty()){
+    
+            JOptionPane.showMessageDialog(null,"Por Favor Ingrese Nombre y Precio");
+    
+        }else{
+    
+    if(txtnombre.getText().isEmpty()){
+            
+            JOptionPane.showMessageDialog(null,"Por Favor Ingrese Nombre ");
+            limpiarCampos();
+    }else{
+        
+        try{
+            
+        String nombre=txtnombre.getText();
+        double precio=Double.parseDouble(txtprecio.getText());
+         
+       
+        int fila =TablaMaterias.getSelectedRow();
+        if((fila>=0)){
+            
+           fichero.editarMateria(nombre,precio,fila);
+           dtm.setValueAt(nombre, fila, 0);
+           dtm.setValueAt(precio, fila, 1); 
+           limpiarCampos();
+            
+        }else{
+            JOptionPane.showMessageDialog(null,"Por Favor Seleccione una Materia");
+        }
+       TablaMaterias.clearSelection();
+       btnaplicar.setEnabled(false);
+       txtnombre.setEnabled(false);
+       txtprecio.setEnabled(false);
+        btneditar.requestFocus();
+            
+        }catch(NumberFormatException ex){
+           JOptionPane.showMessageDialog(null,"Por Favor Ingrese Precio Válido");
+           limpiarCampos();
+        }
+      }  
+      
+    }  
+        
+    }//GEN-LAST:event_txtprecioActionPerformed
     
     
+   
      public void CargarLista(ArrayList<Materias>listaMaterias){
         Object fila[]=new Object[2];
         

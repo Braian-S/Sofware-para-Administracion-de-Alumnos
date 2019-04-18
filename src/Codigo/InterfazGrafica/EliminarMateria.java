@@ -133,22 +133,40 @@ public class EliminarMateria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btncancelarActionPerformed
 
     private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
-        
+ 
         int fila;
         fila=TablaMaterias.getSelectedRow();
-        
+         
         if(fila>=0){
         
+            int msj=JOptionPane.showConfirmDialog(null,"Está Seguro de Eliminar?");
+        
+            if(msj==JOptionPane.YES_OPTION){
             dtm.removeRow(fila);
             fichero.eliminarMateria(fila);
             mostrar(fichero.enviarListaMaterias());
+             TablaMaterias.clearSelection();
+ 
         }else{
-            
-        }
-        
-        
+                if(msj==JOptionPane.NO_OPTION){
+                    TablaMaterias.clearSelection();
+                }
+                else{
+                    if(msj==JOptionPane.CANCEL_OPTION){
+                        TablaMaterias.clearSelection();
+                        
+                    }else{
+                                 if(msj==JOptionPane.CLOSED_OPTION){
+                        TablaMaterias.clearSelection();}
+                    }
+                }
+        }    
+        }else{
+            JOptionPane.showMessageDialog(null,"Por Favor Seleccione una Materia");
     }//GEN-LAST:event_btneliminarActionPerformed
-
+    
+    }
+    
     public void CargarLista(ArrayList<Materias>listaMaterias){
         Object fila[]=new Object[2];
         

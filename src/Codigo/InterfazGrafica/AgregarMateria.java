@@ -7,6 +7,7 @@ package Codigo.InterfazGrafica;
 
 import Codigo.Fichero;
 import Codigo.Materias;
+import javax.swing.JOptionPane;
 
 
 
@@ -39,6 +40,7 @@ public class AgregarMateria extends javax.swing.JInternalFrame {
         txtprecio = new javax.swing.JTextField();
         btnagregar = new javax.swing.JButton();
         btncancelar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -47,21 +49,36 @@ public class AgregarMateria extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Nombre:");
 
+        txtnombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtnombreActionPerformed(evt);
+            }
+        });
+
         jLabel2.setText("Precio:");
 
-        btnagregar.setText("agregar");
+        txtprecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtprecioActionPerformed(evt);
+            }
+        });
+
+        btnagregar.setText("Agregar");
         btnagregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnagregarActionPerformed(evt);
             }
         });
 
-        btncancelar.setText("cancelar");
+        btncancelar.setText("Cancelar");
         btncancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btncancelarActionPerformed(evt);
             }
         });
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setText("$");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -69,36 +86,52 @@ public class AgregarMateria extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtprecio))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(41, 41, 41)
+                        .addGap(6, 6, 6)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btncancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(btnagregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(90, Short.MAX_VALUE))
+                    .addComponent(txtprecio, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                    .addComponent(txtnombre))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                        .addComponent(btnagregar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnagregar))
-                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnagregar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtprecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btncancelar))
-                .addContainerGap(66, Short.MAX_VALUE))
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(btncancelar)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -118,17 +151,97 @@ public class AgregarMateria extends javax.swing.JInternalFrame {
     private void btnagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagregarActionPerformed
 String nombre;
 double precio;
-nombre=txtnombre.getText();
-precio=Double.parseDouble(txtprecio.getText());
-fichero.añadirMateria(nombre, precio);
-fichero.comprobarelementos();
-limpiarCampos();
+
+
+if(txtnombre.getText().isEmpty() && txtprecio.getText().isEmpty()){
+    
+    JOptionPane.showMessageDialog(null,"Por Favor Ingrese Nombre y Precio");
+}else{
+    
+    if(txtnombre.getText().isEmpty()){
+        JOptionPane.showMessageDialog(null,"Por Favor Ingrese Nombre ");
+    }else{
+        
+        try{
+            nombre=txtnombre.getText();
+            precio=Double.parseDouble(txtprecio.getText());
+            fichero.añadirMateria(nombre, precio);
+            fichero.comprobarelementos();
+                limpiarCampos();
+        }catch(NumberFormatException ex){
+           JOptionPane.showMessageDialog(null,"Por Favor Ingrese Precio Válido");
+        }
+    }
+}
+        limpiarCampos();
+
+
        
     }//GEN-LAST:event_btnagregarActionPerformed
 
     private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
        this.dispose();
     }//GEN-LAST:event_btncancelarActionPerformed
+
+    private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
+       String nombre;
+double precio;
+
+
+if(txtnombre.getText().isEmpty() && txtprecio.getText().isEmpty()){
+    
+    JOptionPane.showMessageDialog(null,"Por Favor Ingrese Nombre y Precio");
+    
+}else{
+    
+    if(txtnombre.getText().isEmpty()){
+        JOptionPane.showMessageDialog(null,"Por Favor Ingrese Nombre ");
+         limpiarCampos();
+    }else{
+        
+        try{
+            nombre=txtnombre.getText();
+            precio=Double.parseDouble(txtprecio.getText());
+            fichero.añadirMateria(nombre, precio);
+            fichero.comprobarelementos();
+                limpiarCampos();
+        }catch(NumberFormatException ex){
+           JOptionPane.showMessageDialog(null,"Por Favor Ingrese Precio Válido");
+           limpiarCampos();
+        }
+    }
+}
+    }//GEN-LAST:event_txtnombreActionPerformed
+
+    private void txtprecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtprecioActionPerformed
+       String nombre;
+double precio;
+
+
+if(txtnombre.getText().isEmpty() && txtprecio.getText().isEmpty()){
+    
+    JOptionPane.showMessageDialog(null,"Por Favor Ingrese Nombre y Precio");
+    
+}else{
+    
+    if(txtnombre.getText().isEmpty()){
+        JOptionPane.showMessageDialog(null,"Por Favor Ingrese Nombre ");
+         limpiarCampos();
+    }else{
+        
+        try{
+            nombre=txtnombre.getText();
+            precio=Double.parseDouble(txtprecio.getText());
+            fichero.añadirMateria(nombre, precio);
+            fichero.comprobarelementos();
+                limpiarCampos();
+        }catch(NumberFormatException ex){
+           JOptionPane.showMessageDialog(null,"Por Favor Ingrese Precio Válido");
+            limpiarCampos();
+        }
+    }
+}
+    }//GEN-LAST:event_txtprecioActionPerformed
 
     public void limpiarCampos(){
         
@@ -141,6 +254,7 @@ limpiarCampos();
     private javax.swing.JButton btncancelar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtnombre;
     private javax.swing.JTextField txtprecio;
