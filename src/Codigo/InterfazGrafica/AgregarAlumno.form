@@ -96,7 +96,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btncancelar" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="selectormaterias" max="32767" attributes="0"/>
+                              <Component id="boxmaterias" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="jLabel7" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -116,7 +116,7 @@
                           <Component id="txtnombre" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtapellido" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="selectormaterias" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="boxmaterias" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jSeparator1" alignment="1" min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="jSeparator2" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
@@ -169,27 +169,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtpago">
         </Component>
-        <Component class="javax.swing.JComboBox" name="selectormaterias">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="7">
-                <StringItem index="0" value="analisis 1"/>
-                <StringItem index="1" value="analisis 2"/>
-                <StringItem index="2" value="fisica 2"/>
-                <StringItem index="3" value="quimica"/>
-                <StringItem index="4" value="fisica 1"/>
-                <StringItem index="5" value="calculo "/>
-                <StringItem index="6" value=" "/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectormateriasActionPerformed"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator1">
           <Properties>
             <Property name="orientation" type="int" value="1"/>
@@ -239,6 +218,16 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtfecha">
+        </Component>
+        <Component class="javax.swing.JComboBox" name="boxmaterias">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

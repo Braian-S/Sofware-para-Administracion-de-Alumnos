@@ -7,6 +7,9 @@ package Codigo.InterfazGrafica;
 
 
 import Codigo.Fechas;
+import Codigo.Fichero;
+import Codigo.Materias;
+import java.util.ArrayList;
 
 
 
@@ -18,13 +21,13 @@ import Codigo.Fechas;
  */
 public class AgregarAlumno extends javax.swing.JInternalFrame {
 
-  
+   Fichero fichero =new Fichero();
     Fechas fecha=new Fechas();
     
     public AgregarAlumno() {
         initComponents();
         setTitle("Agregar Alumno");
-        
+        cargarBox(fichero.enviarListaMaterias());
         txtfecha.setText(fecha.ObtenerfechaActual());
     }
 
@@ -44,7 +47,6 @@ public class AgregarAlumno extends javax.swing.JInternalFrame {
         txtnombre = new javax.swing.JTextField();
         txtapellido = new javax.swing.JTextField();
         txtpago = new javax.swing.JTextField();
-        selectormaterias = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
@@ -55,6 +57,7 @@ public class AgregarAlumno extends javax.swing.JInternalFrame {
         btnagregar = new javax.swing.JButton();
         btncancelar = new javax.swing.JButton();
         txtfecha = new javax.swing.JTextField();
+        boxmaterias = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
@@ -68,13 +71,6 @@ public class AgregarAlumno extends javax.swing.JInternalFrame {
         jLabel2.setText("Apellido:");
 
         jLabel3.setText("Materia:");
-
-        selectormaterias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "analisis 1", "analisis 2", "fisica 2", "quimica", "fisica 1", "calculo ", " " }));
-        selectormaterias.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectormateriasActionPerformed(evt);
-            }
-        });
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
@@ -146,7 +142,7 @@ public class AgregarAlumno extends javax.swing.JInternalFrame {
                                 .addComponent(btnagregar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(selectormaterias, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(boxmaterias, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
@@ -161,7 +157,7 @@ public class AgregarAlumno extends javax.swing.JInternalFrame {
                         .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel2)
                         .addComponent(txtapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(selectormaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(boxmaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
@@ -208,12 +204,36 @@ public class AgregarAlumno extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnagregarActionPerformed
 
-    private void selectormateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectormateriasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_selectormateriasActionPerformed
 
-
+    
+    
+    
+    
+    public void cargarBox(ArrayList<Materias>materia){
+        
+        for(Materias m:materia){
+            boxmaterias.addItem(m.getNombre());
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> boxmaterias;
     private javax.swing.JButton btnagregar;
     private javax.swing.JButton btncancelar;
     private javax.swing.JLabel jLabel1;
@@ -227,7 +247,6 @@ public class AgregarAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JComboBox<String> selectormaterias;
     private javax.swing.JTextField txtapellido;
     private javax.swing.JTextField txtfecha;
     private javax.swing.JTextField txtnombre;
