@@ -13,15 +13,22 @@ import javax.swing.JOptionPane;
  */
 public class MenuPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MenuPrincipal
-     */
+    private ListaMaterias listaMaterias=null;
+    private AgregarMateria agregar=null;
+    private  EliminarMateria eliminar=null;
+    EditarMateria editar=null;
+    
+   
+    
     public MenuPrincipal() {
         initComponents();
         setTitle("Instituto Galileo");
         this.setLocationRelativeTo(null);
 
     }
+        
+  
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -221,9 +228,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_AgregaralumnoActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        EditarMateria editar=new EditarMateria();
+
+             
+        if(editar==null || editar.isClosed()){
+       
+        editar=new EditarMateria();
         Escritorio.add(editar);
-        editar.show();
+        editar.setVisible(true);
+       
+        }else{
+            
+            JOptionPane.showMessageDialog(null,"ya existe una ventana abierta");
+        }
+
+      //  ------------------CODIGO ANTIGUO----------------
+        //EditarMateria editar=new EditarMateria();
+        //Escritorio.add(editar);
+        //editar.show();
+        
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void EliminaralumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminaralumnoActionPerformed
@@ -257,15 +279,42 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-       AgregarMateria agregar=new AgregarMateria();
+
+
+        if(agregar==null || agregar.isClosed()){
+       
+        agregar=new AgregarMateria();
        Escritorio.add(agregar);
-       agregar.show();
+       agregar.setVisible(true);
+       
+        }else{
+            
+            JOptionPane.showMessageDialog(null,"ya existe una ventana abierta");
+        }
+        
+        //------------ CODIGO ANTIGUI--------------------
+        //AgregarMateria agregar=new AgregarMateria();
+       //Escritorio.add(agregar);
+       //agregar.show();
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        EliminarMateria eliminar=new EliminarMateria();
+
+        if(eliminar==null || eliminar.isClosed()){
+       
+         eliminar=new EliminarMateria();
         Escritorio.add(eliminar);
-        eliminar.show();
+         eliminar.setVisible(true);
+        
+        }else{
+            
+            JOptionPane.showMessageDialog(null,"ya existe una ventana abierta");
+        }
+    //------------------CODIGO ANTIGUIO---------------------------
+      //  EliminarMateria eliminar=new EliminarMateria();
+        //Escritorio.add(eliminar);
+        
+        //eliminar.show();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
@@ -277,9 +326,26 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-       ListaMaterias listaMaterias=new ListaMaterias();
+
+        if(listaMaterias==null || listaMaterias.isClosed()){
+       
+        listaMaterias=new ListaMaterias();
        Escritorio.add(listaMaterias);
-       listaMaterias.show();
+       listaMaterias.setVisible(true);
+       
+        }else{
+            
+            JOptionPane.showMessageDialog(null,"ya existe una ventana abierta");
+        }
+      //---------------CODIGO ANTIGUO---------------------------------
+      
+      //  ListaMaterias listaMaterias=new ListaMaterias();
+       //Escritorio.add(listaMaterias);
+       //listaMaterias.setVisible(true);
+          //JOptionPane.showMessageDialog(null,"ya existe una ventana abierta");
+          //estado=false;
+      
+          //controlVentana();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
