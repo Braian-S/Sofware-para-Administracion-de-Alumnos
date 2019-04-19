@@ -1,14 +1,13 @@
 
 package Codigo;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.io.Serializable;
 
 /**
  *
  * @author Router
  */
-public class Alumnos {
+public class Alumnos implements Serializable {
     
     private String nombre;
     private String apellido;
@@ -69,10 +68,5 @@ public class Alumnos {
 
    
     
-    public static String ObtenerfechaActual(){
-        Date fecha=new Date();
-        SimpleDateFormat formatoFecha=new SimpleDateFormat("DD/MM/YY");
-        return formatoFecha.format(fecha);
-    }
     
 }

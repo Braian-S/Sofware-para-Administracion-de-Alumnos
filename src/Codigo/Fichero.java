@@ -27,10 +27,21 @@ public class Fichero {
     String DirectorioArchivoM="C:\\SoftwareGalileo\\Materias\\materias.gal";
     String DirectorioCarpetaM="C:\\SoftwareGalileo\\Materias";
     
+    ArrayList<Alumnos>arrayA;
+    ArrayList<Alumnos>ArrayCompa=new ArrayList<Alumnos>();
+    String DirectorioArchivoA="C:\\SoftwareGalileo\\Alumnos\\alumnos.gal";
+    String DirectorioCarpetaA="C:\\SoftwareGalileo\\Alumnos";
+    
     File ArchivoMateria=new File(DirectorioArchivoM);
     File CarpetaMateria=new File(DirectorioCarpetaM);
     
+    File ArchivoAlumno=new File(DirectorioArchivoA);
+    File CarpetaAlumno=new File(DirectorioCarpetaA);
+    
+    
 
+    
+    
 
 public void ComprobarMaterias(){
     
@@ -207,6 +218,301 @@ public void editarMateria(String nombre, double monto,int elemento){
     
     
 }
+
+
+
+
+
+
+
+
+public void ComprobarAlumnos(){
+    
+    if(ArchivoAlumno.exists()){
+        
+    }else{
+        int msj=JOptionPane.showConfirmDialog(null,"Error ,no se encuentran Alumnos,desea crear un nuevo Archivo?");
+    
+        if(msj==JOptionPane.YES_OPTION){
+            
+            CarpetaAlumno.mkdirs();
+        try{
+            
+           try  (FileOutputStream  salidaArchivoA= new FileOutputStream(ArchivoAlumno);
+                        ObjectOutputStream  objetoSalidaA =new ObjectOutputStream(salidaArchivoA)){
+                            objetoSalidaA.writeObject(ArrayCompa);
+                            objetoSalidaA.close();
+                            
+                         JOptionPane.showMessageDialog(null,"Se ha Creado un Archivo de Alumnos con Exito!!");
+                        }             
+       }catch(IOException e){
+            JOptionPane.showMessageDialog(null,"Falla al Crear Archivo");
+       }
+    }
+    }
+}
+
+
+public void añadirAlumno(String nombre,String apellido, String materia,Double pago,String fecha){
+    
+        try{
+                try(FileInputStream entradaArchivoA=new FileInputStream(ArchivoAlumno);
+                    
+                    ObjectInputStream objetoEntradaA=new ObjectInputStream(entradaArchivoA)){
+                    
+                    arrayA=(ArrayList<Alumnos>)objetoEntradaA.readObject(); //Se realiza un casting
+                    
+                        
+                                 Alumnos alumno=new Alumnos( nombre, apellido, materia,pago, fecha);
+                                    arrayA.add(alumno);
+                                 
+                                   // teclado.nextLine();// limpieza de buffer
+                            guardarAlumno(arrayA);
+                            objetoEntradaA.close();
+                
+                } catch (ClassNotFoundException ex) {
+               
+                }
+            }catch(IOException e){
+                              System.out.println("ererorw");
+                              JOptionPane.showMessageDialog(null,"Error,No se Encuentra el Archivo");
+            }           
+}        
+
+
+public void guardarAlumno(ArrayList<Alumnos>alumnos){
+    
+    try{
+               try  (FileOutputStream  salidaArchivoA= new FileOutputStream(ArchivoAlumno);
+                    
+                        ObjectOutputStream  objetoSalidaA =new ObjectOutputStream(salidaArchivoA)){
+                            
+                                
+                                objetoSalidaA.writeObject(alumnos);
+                                
+                                objetoSalidaA.close();
+                        }
+                       
+       }catch(IOException e){
+            JOptionPane.showMessageDialog(null,"Error,No se Encuentra el Archivo");
+       }
+}
+
+
+public ArrayList<Alumnos> enviarListaAlumnos(){
+    
+       
+        try{
+                try(FileInputStream entradaArchivoA=new FileInputStream(ArchivoAlumno);
+                    
+                    ObjectInputStream objetoEntradaA=new ObjectInputStream(entradaArchivoA)){
+                    
+                    arrayA=(ArrayList<Alumnos>)objetoEntradaA.readObject(); //Se realiza un casting
+                    objetoEntradaA.close();
+                      
+                } catch (ClassNotFoundException ex) {
+               
+                }
+                    }catch(IOException e){
+                            // comprobarArchivo();
+                        }
+        return(arrayA);
+    
+    
+}
+
+
+public void eliminarAlumno(int elemento){
+    
+    try{
+                try(FileInputStream entradaArchivoA=new FileInputStream(ArchivoAlumno);
+                    
+                    ObjectInputStream objetoEntradaA=new ObjectInputStream(entradaArchivoA)){
+                    
+                    arrayA=(ArrayList<Alumnos>)objetoEntradaA.readObject(); //Se realiza un casting
+                    
+                        arrayA.remove(elemento);    
+                                   // teclado.nextLine();// limpieza de buffer
+                            guardarAlumno(arrayA);
+                            objetoEntradaA.close();
+                
+                } catch (ClassNotFoundException ex) {
+               
+                }
+            }catch(IOException e){
+                              System.out.println("ererorw");
+            }           
+    
+    
+}
+
+
+public void editarAlumno(String nombre,String apellido, String materia,Double pago,String fecha,int elemento){
+    
+    
+        try{
+                try(FileInputStream entradaArchivoA=new FileInputStream(ArchivoAlumno);
+                    
+                    ObjectInputStream objetoEntradaA=new ObjectInputStream(entradaArchivoA)){
+                    
+                    arrayA=(ArrayList<Alumnos>)objetoEntradaA.readObject(); //Se realiza un casting
+                    
+                        
+                                 arrayA.get(elemento).setNombre(nombre);
+                                 arrayA.get(elemento).setApellido(apellido);
+                                  arrayA.get(elemento).setMateria(materia);
+                                  arrayA.get(elemento).setPago(pago);
+                                   arrayA.get(elemento).setFecha(fecha);
+                                   
+                                 
+                                   // teclado.nextLine();// limpieza de buffer
+                            guardarAlumno(arrayA);
+                            objetoEntradaA.close();
+                
+                } catch (ClassNotFoundException ex) {
+               
+                }
+            }catch(IOException e){
+                              System.out.println("ererorw");
+            }           
+    
+    
+    
+}
+
+
+
+
+public void comprobareElementosAlumnos(){
+    
+    try{
+                try(FileInputStream entradaArchivoA=new FileInputStream(ArchivoAlumno);
+                    
+                    ObjectInputStream objetoEntradaA=new ObjectInputStream(entradaArchivoA)){
+                    
+                    arrayA=(ArrayList<Alumnos>)objetoEntradaA.readObject(); //Se realiza un casting
+                    
+                        for(int i=0;i<arrayA.size();i++){
+                            
+                            System.out.println("ALUMNOS: "+arrayA.get(i).getNombre()+arrayA.get(i).getApellido()+arrayA.get(i).getPago());
+                        }
+                                 
+                                   
+                            objetoEntradaA.close();
+                
+                } catch (ClassNotFoundException ex) {
+               
+                }
+            }catch(IOException e){
+                              System.out.println("ererorw");
+            }           
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

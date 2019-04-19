@@ -17,6 +17,7 @@ public class Principal {
 
        Fichero fichero=new Fichero();
        fichero.ComprobarMaterias();
+       fichero.ComprobarAlumnos();
    
     }
 

@@ -5,17 +5,18 @@
  */
 package Codigo;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class Fechas {
+public class Fechas  {
  
    
     
       public  String ObtenerfechaActual(){
         Date fecha=new Date();
-        SimpleDateFormat formatoFecha=new SimpleDateFormat("DD/MM/YY");
+        SimpleDateFormat formatoFecha=new SimpleDateFormat("d/MM/YY");
         return formatoFecha.format(fecha);
     }
 }
