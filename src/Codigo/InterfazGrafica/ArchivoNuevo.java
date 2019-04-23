@@ -9,12 +9,12 @@ package Codigo.InterfazGrafica;
  *
  * @author Router
  */
-public class NuevoArchivo extends javax.swing.JInternalFrame {
+public class ArchivoNuevo extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form NuevoArchivo
      */
-    public NuevoArchivo() {
+    public ArchivoNuevo() {
         initComponents();
         setTitle("Archivo Nuevo");
     }

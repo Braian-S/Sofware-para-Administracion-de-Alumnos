@@ -23,7 +23,7 @@ public class AgregarAlumno extends javax.swing.JInternalFrame {
 
    Fichero fichero =new Fichero();
     Fechas fecha=new Fechas();
-    
+    ArrayList<Materias>listaM;
     public AgregarAlumno() {
         initComponents();
         setTitle("Agregar Alumno");
@@ -200,11 +200,27 @@ public class AgregarAlumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btncancelarActionPerformed
 
     private void btnagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagregarActionPerformed
-      
+
+        String nombre=txtnombre.getText();
+        String apellido=txtapellido.getText();
+        String fecha=txtfecha.getText();
+        double pago=Double.parseDouble(txtpago.getText());
+        
+        int pos=boxmaterias.getSelectedIndex();
+        listaM=fichero.enviarListaMaterias();
+        String materia=listaM.get(pos).getNombre(); 
+        fichero.añadirAlumno(nombre,apellido,materia,pago,fecha);
+        limpiarCampos();
+       fichero.comprobareElementosAlumnos();
         
     }//GEN-LAST:event_btnagregarActionPerformed
 
-
+ public void limpiarCampos(){
+     txtnombre.setText(null);
+     txtapellido.setText(null);
+     txtpago.setText(null);
+     
+ }
     
     
     

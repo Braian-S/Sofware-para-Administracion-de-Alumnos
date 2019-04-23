@@ -16,7 +16,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private ListaMaterias listaMaterias=null;
     private AgregarMateria agregar=null;
     private  EliminarMateria eliminar=null;
-    EditarMateria editar=null;
+    private EditarMateria editar=null;
+    private ListaAlumnos listaalumnos=null;
+    
+    
     
    
     
@@ -25,6 +28,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setTitle("Instituto Galileo");
         this.setLocationRelativeTo(null);
 
+        // abrimos el frame de lista de alumnos y tambien comprobamos que no halla otra instancia
+        
+        if(listaalumnos==null || listaalumnos.isClosed()){
+       
+        listaalumnos=new ListaAlumnos();
+       Escritorio.add(listaalumnos);
+       listaalumnos.setVisible(true);
+       
+        }else{
+            
+            JOptionPane.showMessageDialog(null,"ya existe una ventana abierta");
+        }        
     }
         
   
@@ -48,9 +63,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator6 = new javax.swing.JPopupMenu.Separator();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jSeparator8 = new javax.swing.JPopupMenu.Separator();
+        jSeparator10 = new javax.swing.JPopupMenu.Separator();
         Agregaralumno = new javax.swing.JMenuItem();
         jSeparator7 = new javax.swing.JPopupMenu.Separator();
         Eliminaralumno = new javax.swing.JMenuItem();
@@ -79,11 +93,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
         EscritorioLayout.setVerticalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 427, Short.MAX_VALUE)
+            .addGap(0, 420, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("Archivo");
+        jMenuBar1.setPreferredSize(new java.awt.Dimension(192, 28));
 
+        jMenu1.setText("Archivo");
+        jMenu1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        jMenuItem1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jMenuItem1.setText("Nuevo Archivo");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,7 +111,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu1.add(jMenuItem1);
         jMenu1.add(jSeparator1);
 
-        jMenuItem7.setText("Configuracion");
+        jMenuItem7.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jMenuItem7.setText("Configuración");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem7ActionPerformed(evt);
@@ -102,6 +121,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu1.add(jMenuItem7);
         jMenu1.add(jSeparator6);
 
+        jMenuItem9.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jMenuItem9.setText("Salir");
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,12 +133,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Alumnos");
-        jMenu2.add(jSeparator2);
+        jMenu2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
+        jMenuItem3.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jMenuItem3.setText("Lista");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem3);
-        jMenu2.add(jSeparator8);
+        jMenu2.add(jSeparator10);
 
+        Agregaralumno.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         Agregaralumno.setText("Agregar ");
         Agregaralumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,6 +155,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu2.add(Agregaralumno);
         jMenu2.add(jSeparator7);
 
+        Eliminaralumno.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         Eliminaralumno.setText("Eliminar ");
         Eliminaralumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,6 +165,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu2.add(Eliminaralumno);
         jMenu2.add(jSeparator3);
 
+        Editaralumno.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         Editaralumno.setText("Editar ");
         Editaralumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,7 +177,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Materias");
+        jMenu3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
+        jMenuItem4.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jMenuItem4.setText("Lista");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,6 +189,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu3.add(jMenuItem4);
         jMenu3.add(jSeparator9);
 
+        jMenuItem6.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jMenuItem6.setText("Agregar");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,6 +199,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu3.add(jMenuItem6);
         jMenu3.add(jSeparator4);
 
+        jMenuItem5.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jMenuItem5.setText("Eliminar");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,6 +209,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu3.add(jMenuItem5);
         jMenu3.add(jSeparator5);
 
+        jMenuItem8.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jMenuItem8.setText("Editar");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,12 +221,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Help");
+        jMenu4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenu4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenu4ActionPerformed(evt);
             }
         });
 
+        jMenuItem2.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jMenuItem2.setText("Info");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,7 +265,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
 
-             
+      // de esta forma como tambien en los demás aparece, controlamos la instancia de los frames
+      // para que solo halla una instancia de los mismos
         if(editar==null || editar.isClosed()){
        
         editar=new EditarMateria();
@@ -266,7 +303,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        NuevoArchivo archivoNuevo=new NuevoArchivo();
+        ArchivoNuevo archivoNuevo=new ArchivoNuevo();
         Escritorio.add(archivoNuevo);
         archivoNuevo.show();
         
@@ -348,6 +385,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
           //controlVentana();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+ 
+         if(listaalumnos==null || listaalumnos.isClosed()){
+       
+        listaalumnos=new ListaAlumnos();
+       Escritorio.add(listaalumnos);
+       listaalumnos.setVisible(true);
+       
+        }else{
+            
+            JOptionPane.showMessageDialog(null,"ya existe una ventana abierta");
+        }        
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -403,13 +454,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator10;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JPopupMenu.Separator jSeparator6;
     private javax.swing.JPopupMenu.Separator jSeparator7;
-    private javax.swing.JPopupMenu.Separator jSeparator8;
     private javax.swing.JPopupMenu.Separator jSeparator9;
     // End of variables declaration//GEN-END:variables
 }
